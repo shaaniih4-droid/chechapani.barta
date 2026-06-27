@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Village Annual Program • 80 Years of Unity</title>
+  <!-- Tailwind via CDN + custom layer for tricolor elegance -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Poppins & Inter Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fdfaf5; /* soft warm white */
+    }
+    h1, h2, h3, .poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* subtle tricolor gradient overlay for specific elements */
+    .tricolor-border {
+      border-left: 4px solid #FF9933;
+      border-right: 4px solid #138808;
+      background: linear-gradient(to right, #FF9933 2px, white 10%, white 90%, #138808 2px);
+    }
+    .navy-accent {
+      color: #0B1E3F; /* deep navy inspired by Ashoka Chakra */
+    }
+    .bg-navy {
+      background-color: #0B1E3F;
+    }
+    .text-saffron {
+      color: #FF9933;
+    }
+    .text-india-green {
+      color: #138808;
+    }
+    .bg-saffron-light {
+      background-color: rgba(255, 153, 51, 0.12);
+    }
+    .bg-green-light {
+      background-color: rgba(19, 136, 8, 0.1);
+    }
+    /* Hero gradient */
+    .hero-pattern {
+      background: linear-gradient(135deg, rgba(255,153,51,0.18) 0%, rgba(255,255,255,0.9) 40%, rgba(19,136,8,0.15) 100%);
+    }
+    /* image hover effects */
+    .gallery-item {
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px -10px rgba(11,30,63,0.3);
+      filter: brightness(1.05);
+    }
+    /* card shadow with navy tint */
+    .card-shadow {
+      box-shadow: 0 12px 25px -8px rgba(11, 30, 63, 0.15);
+    }
+    .member-card:hover {
+      box-shadow: 0 20px 30px -10px rgba(11, 30, 63, 0.3);
+      transform: translateY(-5px);
+    }
+    /* smooth reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* filter tabs active style */
+    .filter-btn.active {
+      background-color: #0B1E3F;
+      color: white;
+      border-color: #0B1E3F;
+      box-shadow: 0 4px 10px rgba(11,30,63,0.4);
+    }
+    @media (max-width: 640px) {
+      .hero-headline {
+        font-size: 2.2rem;
+        line-height: 1.2;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-800">
+
+  <!-- Main container with subtle tricolor top border effect -->
+  <div class="w-full h-1.5 flex">
+    <div class="w-1/3 bg-[#FF9933]"></div>
+    <div class="w-1/3 bg-white"></div>
+    <div class="w-1/3 bg-[#138808]"></div>
+  </div>
+
+  <!-- Navigation (minimal, respectful) -->
+  <nav class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">At</span>
+          <span class="font-bold text-xl navy-accent poppins tracking-tight">CHECHAPANI <span class="text-saffron">'20 26</span></span>
+        </div>
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#home" class="navy-accent hover:text-[#FF9933] transition">Home</a>
+          <a href="#journey" class="text-gray-700 hover:text-[#FF9933] transition">Journey</a>
+          <a href="#gallery" class="text-gray-700 hover:text-[#FF9933] transition">Memories</a>
+          <a href="#committee" class="text-gray-700 hover:text-[#FF9933] transition">Committee</a>
+          <a href="#contact" class="text-gray-700 hover:text-[#FF9933] transition">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="navy-accent focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden pb-3 space-y-2 text-sm font-medium">
+        <a href="#home" class="block py-2 navy-accent">Home</a>
+        <a href="#journey" class="block py-2 text-gray-700">Journey</a>
+        <a href="#gallery" class="block py-2 text-gray-700">Memories</a>
+        <a href="#committee" class="block py-2 text-gray-700">Committee</a>
+        <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <!-- Independence day themed background with tricolor overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#FF9933]/20 via-white/70 to-[#138808]/20 hero-pattern z-0"></div>
+    <!-- decorative ashoka chakra inspired element (subtle) -->
+    <div class="absolute right-0 top-0 w-64 h-64 md:w-96 md:h-96 opacity-10 pointer-events-none" style="background: radial-gradient(circle, #0B1E3F 10%, transparent 70%);"></div>
+    <div class="absolute left-10 bottom-10 w-40 h-40 bg-[#0B1E3F] rounded-full opacity-5 blur-3xl"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-20">
+      <span class="inline-block bg-white/70 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-semibold tracking-wider navy-accent mb-6 border border-[#FF9933]/40">
+        🇮🇳 80th Independence Day Special
+      </span>
+      <h1 class="hero-headline text-5xl md:text-7xl font-extrabold navy-accent leading-tight mb-6 drop-shadow-sm">
+        Celebrating 80 Years of <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9933] via-[#0B1E3F] to-[#138808]">Unity & Heritage</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 font-medium">
+        Join our village's grand annual program — 80 years of tradition, togetherness, and patriotic spirit. 
+        <span class="text-saffron font-semibold">Chechapani</span> invites you to relive the legacy.
+      </p>
+      <a href="#gallery" class="inline-flex items-center gap-3 bg-navy text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-[#0e2547] transition-all duration-300 transform hover:scale-105">
+        <span>Explore Memories</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <!-- waving flag strip at bottom -->
+    <div class="absolute bottom-0 left-0 w-full flex h-3 z-10">
+      <div class="w-1/3 bg-[#FF9933]"></div>
+      <div class="w-1/3 bg-white"></div>
+      <div class="w-1/3 bg-[#138808]"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT THE JOURNEY / TIMELINE -->
+  <section id="journey" class="py-20 px-4 max-w-7xl mx-auto reveal">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-bold navy-accent mb-4">Our 10-Year Journey</h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] via-[#0B1E3F] to-[#138808] mx-auto rounded"></div>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">From a small gathering to a village-wide celebration — a timeline of pride and progress.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+      <!-- timeline items with subtle tricolor dots -->
+      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
+        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <span class="text-saffron font-bold text-lg"> </span>
+        <h3 class="font-semibold text-lg navy-accent">2017</h3>
+        <p class="text-gray-600 text-sm mt-1">Flag hoisting & first cultural evening with 50 families.</p>
+      </div>
+      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
+        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-white border-2 border-[#0B1E3F] rounded-full shadow"></div>
+        <span class="text-saffron font-bold text-lg">Year 3</span>
+        <h3 class="font-semibold text-lg navy-accent">2020</h3>
+        <p class="text-gray-600 text-sm mt-1">Virtual celebrations & community support during pandemic.</p>
+      </div>
+      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
+        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#138808] rounded-full border-2 border-white shadow"></div>
+        <span class="text-saffron font-bold text-lg">Year 5</span>
+        <h3 class="font-semibold text-lg navy-accent">2022</h3>
+        <p class="text-gray-600 text-sm mt-1">Grand parade & youth talent showcase, 500+ attendees.</p>
+      </div>
+      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
+        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#0B1E3F] rounded-full border-2 border-white shadow"></div>
+        <span class="text-saffron font-bold text-lg">Year 9</span>
+        <h3 class="font-semibold text-lg navy-accent">2025</h3>
+        <p class="text-gray-600 text-sm mt-1">Cultural fest, awards & historic village exhibition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORIES GALLERY WITH FILTERS -->
+  <section id="gallery" class="py-16 px-4 max-w-7xl mx-auto reveal bg-saffron-light/30 rounded-3xl my-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold navy-accent">Memories Gallery</h2>
+      <p class="text-gray-600 mt-2">Click on any to  the moments</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] to-[#138808] mx-auto mt-3 rounded"></div>
+    </div>
+    
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-container">
+      <button class="filter-btn active px-5 py-2 rounded-full border border-navy text-navy font-medium transition bg-navy text-white" data-year="all">All Years</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year1">Year 1</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year2">Year 2</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year3">Year 3</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year4">Year 4</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year5">Year 5</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year6">Year 6</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year7">Year 7</button>
+    </div>
+
+    <!-- Masonry-like grid using columns -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+      <!-- Gallery items injected via JS for interactivity, but also static fallback -->
+    </div>
+  </section>
+
+  <!-- COMMITTEE MEMBERS SECTION -->
+  <section id="committee" class="py-20 px-4 max-w-7xl mx-auto reveal">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl md:text-5xl font-bold navy-accent">Core Committee</h2>
+      <p class="text-gray-600 mt-2">The dedicated hearts behind our 7-year legacy</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] to-[#138808] mx-auto mt-3 rounded"></div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Member cards with placeholder images -->
+      <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
+          <i class="fas fa-user-circle text-5xl text-navy"></i>
+        </div>
+        <h3 class="font-bold text-xl navy-accent">-----</h3>
+        <p class="text-saffron font-medium text-sm">President</p>
+      </div>
+      <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
+          <i class="fas fa-user-circle text-5xl text-navy"></i>
+        </div>
+        <h3 class="font-bold text-xl navy-accent">not define--</h3>
+        <p class="text-saffron font-medium text-sm">Vice President</p>
+      </div>
+      <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
+          <i class="fas fa-user-circle text-5xl text-navy"></i>
+        </div>
+        <h3 class="font-bold text-xl navy-accent">not define</h3>
+        <p class="text-saffron font-medium text-sm">Secretary</p>
+      </div>
+      <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
+          <i class="fas fa-user-circle text-5xl text-navy"></i>
+        </div>
+        <h3 class="font-bold text-xl navy-accent">javed ali </h3>
+        <p class="text-saffron font-medium text-sm">Treasurer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="bg-navy text-white py-14 px-4 mt-10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+      <div>
+        <h3 class="text-2xl font-bold poppins flex items-center justify-center md:justify-start gap-2"><span>🇮🇳</span> Chechapani</h3>
+        <p class="text-gray-300 mt-3 text-sm">Independence Day celebration • Since 2017</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg mb-3 text-saffron">Contact</h4>
+        <p class="text-gray-300"><i class="fas fa-envelope mr-2"></i> chechapanibarta@gmail.com</p>
+        <p class="text-gray-300 mt-1"><i class="fas fa-phone-alt mr-2"></i> 9864963010</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg mb-3 text-saffron">Follow Us</h4>
+        <div class="flex justify-center md:justify-start space-x-5 text-2xl">
+          <a href="#" class="hover:text-[#FF9933] transition"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-[#FF9933] transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-[#FF9933] transition"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+      © 2026 @Shaanii.h4. All rights reserved. | Celebrating Unity & Heritage.
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ---------- GALLERY DATA (placeholder images & video thumbnails) ----------
+      const galleryItems = [
+        { year: 'year7', type: 'image', src:'photo2.jpg', alt: 'moment' },
+        { year: 'year1', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Video+Year+1', alt: 'Year 1 video' },
+        { year: 'year2', type: 'image', src: 'photo3.jpg', alt: 'Year 2 cultural' },
+        { year: 'year2', type: 'image', src: 'photo4.jpg', alt: '' },
+        { year: 'year3', type: 'video', src: 'photo5', alt: ' ' },
+        { year: 'year3', type: 'image', src: 'https://www.instagram.com/reel/DNc19Stvbfl/?igsh=MWc0Z3A2YnFzOHM0ZQ==', alt: 'Year ' },
+        { year: 'year4', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=Year+4+Parade', alt: 'Year 4' },
+        { year: 'year4', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Dance+Year+4', alt: 'Year 4 dance' },
+        { year: 'year5', type: 'image', src: 'https://placehold.co/600x400/138808/white?text=Year+5+Exhibition', alt: 'Year 5' },
+        { year: 'year5', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=Year+5+Award', alt: 'Year 5 award' },
+        { year: 'year6', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Year+6+Highlights', alt: 'Year 6' },
+        { year: 'year6', type: 'image', src: 'https://www.facebook.com/photo.php?fbid=7793836230726731&set=a.312512542192508&type=3&mibextid=NOb6eG', alt: 'Year 6' },
+        { year: 'year7', type: 'image', src:'photo2.jpg', alt: 'moment' },
+        { year: 'year7', type: 'video', src: 'https://www.instagram.com/reel/DNc19Stvbfl/?igsh=MWc0Z3A2YnFzOHM0ZQ==', alt: 'Year 7 video' }
+      ];
+
+      const galleryGrid = document.getElementById('gallery-grid');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+
+      function renderGallery(filterYear = 'all') {
+        if (!galleryGrid) return;
+        const filtered = filterYear === 'all' ? galleryItems : galleryItems.filter(item => item.year === filterYear);
+        
+        galleryGrid.innerHTML = filtered.map(item => {
+          const isVideo = item.type === 'video';
+          return `
+            <div class="gallery-item relative overflow-hidden rounded-xl bg-white shadow-md group" data-year="${item.year}">
+              <img src="${item.src}" alt="${item.alt}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+              ${isVideo ? '<div class="absolute inset-0 flex items-center justify-center"><i class="fas fa-play-circle text-white text-5xl opacity-80 drop-shadow-lg"></i></div>' : ''}
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                <span class="text-white text-xs font-semibold uppercase tracking-wider">${item.year.replace('year','Year ')}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Initial render
+      renderGallery('all');
+
+      // Filter button logic
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          filterButtons.forEach(b => b.classList.remove('active', 'bg-navy', 'text-white'));
+          this.classList.add('active', 'bg-navy', 'text-white');
+          const year = this.getAttribute('data-year');
+          renderGallery(year);
+        });
+      });
+
+      // ---------- MOBILE MENU TOGGLE ----------
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        // close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+
+      // ---------- SCROLL REVEAL ANIMATION ----------
+      const revealElements = document.querySelectorAll('.reveal');
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(el => {
+          const elementTop = el.getBoundingClientRect().top;
+          const revealPoint = 120;
+          if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', checkReveal);
+      window.addEventListener('load', checkReveal);
+      // Trigger once on load
+      checkReveal();
+
+      // Smooth scrolling for anchor links (fallback)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
