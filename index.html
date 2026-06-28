@@ -15,19 +15,18 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #fdfaf5; /* soft warm white */
+      background: #fdfaf5;
     }
     h1, h2, h3, .poppins {
       font-family: 'Poppins', sans-serif;
     }
-    /* subtle tricolor gradient overlay for specific elements */
     .tricolor-border {
       border-left: 4px solid #FF9933;
       border-right: 4px solid #138808;
       background: linear-gradient(to right, #FF9933 2px, white 10%, white 90%, #138808 2px);
     }
     .navy-accent {
-      color: #0B1E3F; /* deep navy inspired by Ashoka Chakra */
+      color: #0B1E3F;
     }
     .bg-navy {
       background-color: #0B1E3F;
@@ -44,11 +43,9 @@
     .bg-green-light {
       background-color: rgba(19, 136, 8, 0.1);
     }
-    /* Hero gradient */
     .hero-pattern {
       background: linear-gradient(135deg, rgba(255,153,51,0.18) 0%, rgba(255,255,255,0.9) 40%, rgba(19,136,8,0.15) 100%);
     }
-    /* image hover effects */
     .gallery-item {
       transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s;
       cursor: pointer;
@@ -58,7 +55,6 @@
       box-shadow: 0 20px 30px -10px rgba(11,30,63,0.3);
       filter: brightness(1.05);
     }
-    /* card shadow with navy tint */
     .card-shadow {
       box-shadow: 0 12px 25px -8px rgba(11, 30, 63, 0.15);
     }
@@ -66,7 +62,6 @@
       box-shadow: 0 20px 30px -10px rgba(11, 30, 63, 0.3);
       transform: translateY(-5px);
     }
-    /* smooth reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -76,7 +71,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* filter tabs active style */
     .filter-btn.active {
       background-color: #0B1E3F;
       color: white;
@@ -89,23 +83,55 @@
         line-height: 1.2;
       }
     }
+    /* slider */
+    .slide-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .slide-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+    .slide-track img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    @media (min-width: 640px) {
+      .slide-track img {
+        height: 400px;
+      }
+    }
+    /* nav logo */
+    .nav-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body class="antialiased text-gray-800">
 
-  <!-- Main container with subtle tricolor top border effect -->
+  <!-- Tricolor top border -->
   <div class="w-full h-1.5 flex">
     <div class="w-1/3 bg-[#FF9933]"></div>
     <div class="w-1/3 bg-white"></div>
     <div class="w-1/3 bg-[#138808]"></div>
   </div>
 
-  <!-- Navigation (minimal, respectful) -->
+  <!-- Navigation with Logo -->
   <nav class="bg-white/90 backdrop-blur-sm sticky top-0 z-50 shadow-sm border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <div class="flex items-center space-x-2">
-          <span class="text-2xl">At</span>
+        <div class="flex items-center space-x-3">
+          <!-- Logo (SVG based tricolor emblem) -->
+          <img class="nav-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230B1E3F'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23FF9933'/%3E%3Ccircle cx='50' cy='50' r='25' fill='%23138808'/%3E%3Ccircle cx='50' cy='50' r='12' fill='white'/%3E%3C/svg%3E" alt="Village emblem">
           <span class="font-bold text-xl navy-accent poppins tracking-tight">CHECHAPANI <span class="text-saffron">'20 26</span></span>
         </div>
         <div class="hidden md:flex space-x-6 text-sm font-medium">
@@ -131,19 +157,17 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION with auto sliding photo -->
   <section id="home" class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
-    <!-- Independence day themed background with tricolor overlay -->
     <div class="absolute inset-0 bg-gradient-to-br from-[#FF9933]/20 via-white/70 to-[#138808]/20 hero-pattern z-0"></div>
-    <!-- decorative ashoka chakra inspired element (subtle) -->
     <div class="absolute right-0 top-0 w-64 h-64 md:w-96 md:h-96 opacity-10 pointer-events-none" style="background: radial-gradient(circle, #0B1E3F 10%, transparent 70%);"></div>
     <div class="absolute left-10 bottom-10 w-40 h-40 bg-[#0B1E3F] rounded-full opacity-5 blur-3xl"></div>
     
-    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-20">
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6 py-10 w-full">
       <span class="inline-block bg-white/70 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-semibold tracking-wider navy-accent mb-6 border border-[#FF9933]/40">
         🇮🇳 80th Independence Day Special
       </span>
-      <h1 class="hero-headline text-5xl md:text-7xl font-extrabold navy-accent leading-tight mb-6 drop-shadow-sm">
+      <h1 class="hero-headline text-4xl md:text-6xl font-extrabold navy-accent leading-tight mb-6 drop-shadow-sm">
         Celebrating 80 Years of <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9933] via-[#0B1E3F] to-[#138808]">Unity & Heritage</span>
       </h1>
       <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10 font-medium">
@@ -154,8 +178,18 @@
         <span>Explore Memories</span>
         <i class="fas fa-arrow-right"></i>
       </a>
+
+      <!-- Auto-sliding photo gallery (home page) -->
+      <div class="mt-12 slide-container">
+        <div class="slide-track" id="homeSlider">
+          <img src="photo4.jpg" alt="slide 1">
+          <img src="photo5.jpg" alt="slide 2">
+          <img src="photo6.jpg" alt="slide 3">
+          <img src="photo7.jpg" alt="slide 4">
+          <img src="photo2.jpg" alt="slide 5">
+        </div>
+      </div>
     </div>
-    <!-- waving flag strip at bottom -->
     <div class="absolute bottom-0 left-0 w-full flex h-3 z-10">
       <div class="w-1/3 bg-[#FF9933]"></div>
       <div class="w-1/3 bg-white"></div>
@@ -163,104 +197,153 @@
     </div>
   </section>
 
-  <!-- ABOUT THE JOURNEY / TIMELINE -->
+  <!-- JOURNEY TIMELINE: 2017-2026 -->
   <section id="journey" class="py-20 px-4 max-w-7xl mx-auto reveal">
     <div class="text-center mb-14">
       <h2 class="text-4xl md:text-5xl font-bold navy-accent mb-4">Our 10-Year Journey</h2>
       <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] via-[#0B1E3F] to-[#138808] mx-auto rounded"></div>
-      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">From a small gathering to a village-wide celebration — a timeline of pride and progress.</p>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">From 2017 to 2026 — a decade of pride and progress.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-      <!-- timeline items with subtle tricolor dots -->
-      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
-        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
-        <span class="text-saffron font-bold text-lg"> </span>
-        <h3 class="font-semibold text-lg navy-accent">2017</h3>
-        <p class="text-gray-600 text-sm mt-1">Flag hoisting & first cultural evening with 50 families.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 relative">
+      <!-- years 2017-2026 -->
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2017</h3>
+        <p class="text-gray-600 text-sm">First flag hoisting, 50 families</p>
       </div>
-      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
-        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-white border-2 border-[#0B1E3F] rounded-full shadow"></div>
-        <span class="text-saffron font-bold text-lg">Year 3</span>
-        <h3 class="font-semibold text-lg navy-accent">2020</h3>
-        <p class="text-gray-600 text-sm mt-1">Virtual celebrations & community support during pandemic.</p>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2018</h3>
+        <p class="text-gray-600 text-sm">Cultural evening, youth participation</p>
       </div>
-      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
-        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#138808] rounded-full border-2 border-white shadow"></div>
-        <span class="text-saffron font-bold text-lg">Year 5</span>
-        <h3 class="font-semibold text-lg navy-accent">2022</h3>
-        <p class="text-gray-600 text-sm mt-1">Grand parade & youth talent showcase, 500+ attendees.</p>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2019</h3>
+        <p class="text-gray-600 text-sm">Sports & flag rally</p>
       </div>
-      <div class="relative pl-8 md:pl-0 md:pt-12 border-l-2 md:border-l-0 md:border-t-2 border-dashed border-gray-300 md:col-span-1">
-        <div class="absolute left-[-10px] md:left-1/2 md:top-[-12px] w-5 h-5 bg-[#0B1E3F] rounded-full border-2 border-white shadow"></div>
-        <span class="text-saffron font-bold text-lg">Year 9</span>
-        <h3 class="font-semibold text-lg navy-accent">2025</h3>
-        <p class="text-gray-600 text-sm mt-1">Cultural fest, awards & historic village exhibition.</p>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2020</h3>
+        <p class="text-gray-600 text-sm">Virtual celebrations</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2021</h3>
+        <p class="text-gray-600 text-sm">Community kitchen & tribute</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2022</h3>
+        <p class="text-gray-600 text-sm">Grand parade, 500+ attendees</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2023</h3>
+        <p class="text-gray-600 text-sm">অসমৰ গোৱালপাৰা জিলাৰ চেঁচাপানীত ৭৭ সংখ্যক স্বাধীনতা দিৱস: ‘মিনি অসম’ত নিতুমণি শইকীয়াৰ উপস্থিতিত ২০ গৰাকীক সমাজ সেৱা বঁটা
+
+বিভিন্ন জাতি-ধৰ্মৰ মিলনভূমি গোৱালপাৰাৰ চেঁচাপানীত ৭৭ সংখ্যক স্বাধীনতা দিৱস এক ব্যতিক্ৰমী দেশপ্ৰেমৰ পৰিৱেশত উদযাপন কৰা হয়। এইবাৰৰ কেন্দ্ৰীয় কাৰ্যসূচীৰ মুখ্য অতিথি হিচাপে উপস্থিত থাকে অসমৰ জনপ্ৰিয় সাংবাদিক তথা সমাজকৰ্মী শ্ৰীযুত নিতুমণি শইকীয়া।
+
+পুৱা ৰাষ্ট্ৰীয় সংগীতৰ সুললিত ধ্বনিৰ মাজত ত্ৰিৰংগা পতাকা উত্তোলন কৰা হয়। ইয়াৰ পিছতে জিলাখনৰ ১৫ খন আগশাৰীৰ বিদ্যালয় আৰু মহাবিদ্যালয়ৰ ছাত্ৰ ছাত্ৰীয়ে শৃংখলাবদ্ধ আৰু আকৰ্ষণীয় কুচকাৱাজ প্ৰদৰ্শন কৰে। অনুষ্ঠানস্থলীত প্ৰায় ২০,০০০ লোকৰ অভূতপূৰ্ব সমাৱেশে চেঁচাপানীৰ আকাশ বতাহ দেশপ্ৰেমেৰে মুখৰিত কৰি তোলে।
+
+এইবাৰৰ স্বাধীনতা দিৱসৰ মূল আকৰ্ষণ আছিল ‘সমাজ সেৱা বঁটা’ প্ৰদান অনুষ্ঠান। শিক্ষা, স্বাস্থ্য, পৰিবেশ আৰু সংস্কৃতিৰ ক্ষেত্ৰত নীৰৱে অৱদান আগবঢ়াই অহা ২০ গৰাকী সমাজ সেৱকক মুখ্য অতিথি শ্ৰীযুত শইকীয়াই ফুলাম গামোচা, স্মাৰক আৰু মানপত্ৰৰে সন্মানিত কৰে। বঁটা প্ৰাপকসকলৰ ত্যাগ আৰু সেৱাৰ কাহিনীয়ে উপস্থিত প্ৰতিজন লোককে অনুপ্ৰাণিত কৰে।
+
+‘চেঁচাপানী সদায় চেঁচা কৰি ৰাখক’ : নিতুমণি শইকীয়া
+ভাষণ প্ৰসংগত শ্ৰীযুত শইকীয়াই কয়, “স্বাধীনতা মাথোঁ এটা তাৰিখ নহয়, ই এক দায়িত্ব। সমাজৰ প্ৰতিজন লোকে নিজৰ কৰ্তব্য পালন কৰিলেহে দেশ প্রকৃতাৰ্থত আগুৱাই যাব।” তেখেতে যুৱ প্ৰজন্মক আহ্বান জনাই কয়, “চেঁচাপানী নামটোৰ দৰেই আপোনালোকে এই অঞ্চলটো সদায় শান্ত আৰু চেঁচা কৰি ৰাখক।”
+বিভিন্ন জাতি-ধৰ্মৰ ৰাইজৰ উপস্থিতিক লৈ তেখেতে আবেগিক হৈ কয়, “চেঁচাপানীলৈ আহি মোৰ এখন মিনি অসমত থকা যেন অনুভৱ হৈছে। ইয়াতেই আমাৰ সম্প্ৰীতিৰ শক্তি।” বঁটা প্ৰাপকসকলক ‘সমাজৰ প্ৰকৃত নায়ক’ আখ্যা দি তেখেতে নতুন প্ৰজন্মক তেওঁলোকৰ আদৰ্শৰে আগবাঢ়িবলৈ আহ্বান জনায়।
+ছাত্ৰ ছাত্ৰীসকলে পৰিৱেশন কৰা দেশপ্ৰেমমূলক সমবেত সংগীত, নৃত্য আৰু সাংস্কৃতিক কাৰ্যসূচীয়ে দিনটোৰ গৰিমা দুগুণে বৃদ্ধি কৰে। সম্পূৰ্ণ শান্তিপূৰ্ণ আৰু গভীৰ দেশাত্মবোধক পৰিৱেশেৰে কাৰ্যসূচীৰ সামৰণি পৰে।</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2024</h3>
+        <p class="text-gray-600 text-sm">চেঁচাপানীত ৭৮ সংখ্যক স্বাধীনতা দিৱস: ২০২৪
+
+গোৱালপাৰা জিলাৰ চেঁচাপানীত ৭৮ সংখ্যক স্বাধীনতা দিৱস উলহ মালহেৰে উদযাপন কৰা হয়। কেন্দ্ৰীয় কাৰ্যসূচীত মুখ্য অতিথি হিচাপে উপস্থিত থাকে অসমৰ বিশিষ্ট লেখক শ্ৰীযুত ময়ুৰ বৰা।
+
+পুৱা ঠিক ৯ বজাত ৰাষ্ট্ৰীয় সংগীতৰ ধ্বনিৰ মাজত ত্ৰিৰংগা পতাকা উত্তোলন কৰি দিনটোৰ কাৰ্যসূচীৰ শুভাৰম্ভ কৰে। ইয়াৰ পিছতে জিলাখনৰ ১৬ খন বিদ্যালয় আৰু মহাবিদ্যালয়ৰ ছাত্ৰ ছাত্ৰীয়ে অংশগ্ৰহণ কৰা আকৰ্ষণীয় কুচকাৱাজ প্ৰদৰ্শিত হয়। শৃংখলাবদ্ধ সমদলে উপস্থিত ৰাইজৰ প্ৰশংসা বুটলিবলৈ সক্ষম হয়।
+
+কুচকাৱাজৰ অন্তত ছাত্ৰ ছাত্ৰীসকলে দেশপ্ৰেমমূলক সমবেত সংগীত, নৃত্য আৰু বিভিন্ন সাংস্কৃতিক কাৰ্যসূচী পৰিৱেশন কৰে। দেশমাতৃৰ প্ৰতি উছৰ্গিত প্ৰতিটো প্ৰদৰ্শনীয়ে সহস্ৰাধিক দৰ্শকক আপ্লুত কৰে। অনুষ্ঠানস্থলীত প্ৰায় ১৮,০০০ লোকৰ সমাৱেশে স্বাধীনতা দিৱসৰ গাম্ভীৰ্য আৰু উৎসাহ দুগুণে বৃদ্ধি কৰে।
+
+অনুষ্ঠানৰ এক গুৰুত্বপূৰ্ণ অংশ আছিল শিক্ষক সম্বৰ্ধনা। শিক্ষা ক্ষেত্ৰত জীৱনজোৰা অৱদান আগবঢ়োৱা চেঁচাপানী অঞ্চলৰ কেইবাগৰাকীও জ্যেষ্ঠ শিক্ষকক মুখ্য অতিথি শ্ৰীযুত ময়ুৰ বৰাই ফুলাম গামোচা আৰু মানপত্ৰৰে সন্মান জনায়।
+
+নিজৰ ভাষণত শ্ৰীযুত বৰাই মহান স্বাধীনতা সংগ্ৰামীসকলক গভীৰ শ্ৰদ্ধাৰে সোঁৱৰণ কৰে। তেখেতে কয়, “জাতি গঠনৰ আধাৰ হৈছে শিক্ষা, আৰু সেই শিক্ষাৰ বন্তি হাতত লৈ আমাৰ সমাজখনক পোহৰাই ৰাখিছে শিক্ষকসকলে। তেওঁলোকৰ ভূমিকা অপৰিসীম।” লগতে তেখেতে নতুন প্ৰজন্মক দেশৰ প্ৰগতি আৰু একতাৰ বাবে নিষ্ঠাৰে কাম কৰিবলৈ আহ্বান জনায়।
+সম্পূৰ্ণ শান্তিপূৰ্ণ আৰু দেশপ্ৰেমৰ এক উৎসাহজনক পৰিবেশেৰে দিনৰ ৩.০০ বজাত কাৰ্যসূচীৰ সামৰণি পৰে।</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2025</h3>
+        <p class="text-gray-600 text-sm">Historic milestone, 80th year</p>
+      </div>
+      <div class="relative pl-6 border-l-2 md:border-l-0 border-dashed border-gray-300 p-3 bg-white/50 rounded-xl shadow-sm">
+        <div class="absolute left-[-8px] md:static w-4 h-4 bg-[#FF9933] rounded-full border-2 border-white shadow"></div>
+        <h3 class="font-bold text-lg navy-accent mt-1">2026</h3>
+        <p class="text-gray-600 text-sm">Decade celebration & legacy</p>
       </div>
     </div>
   </section>
 
-  <!-- MEMORIES GALLERY WITH FILTERS -->
+  <!-- MEMORIES GALLERY with YouTube player -->
   <section id="gallery" class="py-16 px-4 max-w-7xl mx-auto reveal bg-saffron-light/30 rounded-3xl my-8">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-5xl font-bold navy-accent">Memories Gallery</h2>
-      <p class="text-gray-600 mt-2">Click on any to  the moments</p>
+      <p class="text-gray-600 mt-2">Click on any video to play on YouTube</p>
       <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] to-[#138808] mx-auto mt-3 rounded"></div>
     </div>
     
     <!-- Filter Tabs -->
     <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-container">
       <button class="filter-btn active px-5 py-2 rounded-full border border-navy text-navy font-medium transition bg-navy text-white" data-year="all">All Years</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year1">Year 1</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year2">Year 2</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year3">Year 3</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year4">Year 4</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year5">Year 5</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year6">Year 6</button>
-      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="year7">Year 7</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2017">2017</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2018">2018</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2019">2019</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2020">2020</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2021">2021</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2022">2022</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2023">2023</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2024">2024</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2025">2025</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 font-medium hover:border-[#FF9933] transition" data-year="2026">2026</button>
     </div>
 
-    <!-- Masonry-like grid using columns -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-      <!-- Gallery items injected via JS for interactivity, but also static fallback -->
+      <!-- items injected by JS -->
     </div>
   </section>
 
-  <!-- COMMITTEE MEMBERS SECTION -->
+  <!-- CORE COMMITTEE (updated) -->
   <section id="committee" class="py-20 px-4 max-w-7xl mx-auto reveal">
     <div class="text-center mb-14">
       <h2 class="text-4xl md:text-5xl font-bold navy-accent">Core Committee</h2>
-      <p class="text-gray-600 mt-2">The dedicated hearts behind our 7-year legacy</p>
+      <p class="text-gray-600 mt-2">The dedicated hearts behind our legacy</p>
       <div class="w-20 h-1 bg-gradient-to-r from-[#FF9933] to-[#138808] mx-auto mt-3 rounded"></div>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <!-- Member cards with placeholder images -->
       <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
         <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
           <i class="fas fa-user-circle text-5xl text-navy"></i>
         </div>
-        <h3 class="font-bold text-xl navy-accent">-----</h3>
+        <h3 class="font-bold text-xl navy-accent">Javed Ali</h3>
         <p class="text-saffron font-medium text-sm">President</p>
       </div>
       <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
         <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
           <i class="fas fa-user-circle text-5xl text-navy"></i>
         </div>
-        <h3 class="font-bold text-xl navy-accent">not define--</h3>
+        <h3 class="font-bold text-xl navy-accent">James Marak</h3>
         <p class="text-saffron font-medium text-sm">Vice President</p>
       </div>
       <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
         <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
           <i class="fas fa-user-circle text-5xl text-navy"></i>
         </div>
-        <h3 class="font-bold text-xl navy-accent">not define</h3>
+        <h3 class="font-bold text-xl navy-accent">Abdul Kalam</h3>
         <p class="text-saffron font-medium text-sm">Secretary</p>
       </div>
       <div class="member-card bg-white p-6 rounded-2xl card-shadow text-center transition-all duration-300 border border-gray-100">
         <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-[#FF9933]/20 to-[#138808]/20 flex items-center justify-center mb-4 border-2 border-white shadow">
           <i class="fas fa-user-circle text-5xl text-navy"></i>
         </div>
-        <h3 class="font-bold text-xl navy-accent">javed ali </h3>
-        <p class="text-saffron font-medium text-sm">Treasurer</p>
+        <h3 class="font-bold text-xl navy-accent">Izbahar Ali</h3>
+        <p class="text-saffron font-medium text-sm">Secretary</p>
       </div>
     </div>
   </section>
@@ -293,22 +376,40 @@
 
   <script>
     (function() {
-      // ---------- GALLERY DATA (placeholder images & video thumbnails) ----------
+      // ---------- HOME SLIDER (auto) ----------
+      const track = document.getElementById('homeSlider');
+      if (track) {
+        let index = 0;
+        const slides = track.querySelectorAll('img');
+        const total = slides.length;
+        setInterval(() => {
+          index = (index + 1) % total;
+          track.style.transform = `translateX(-${index * 100}%)`;
+        }, 3000);
+      }
+
+      // ---------- GALLERY DATA (with YouTube videos) ----------
       const galleryItems = [
-        { year: 'year7', type: 'image', src:'photo2.jpg', alt: 'moment' },
-        { year: 'year1', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Video+Year+1', alt: 'Year 1 video' },
-        { year: 'year2', type: 'image', src: 'photo3.jpg', alt: 'Year 2 cultural' },
-        { year: 'year2', type: 'image', src: 'photo4.jpg', alt: '' },
-        { year: 'year3', type: 'video', src: 'photo5', alt: ' ' },
-        { year: 'year3', type: 'image', src: 'https://www.instagram.com/reel/DNc19Stvbfl/?igsh=MWc0Z3A2YnFzOHM0ZQ==', alt: 'Year ' },
-        { year: 'year4', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=Year+4+Parade', alt: 'Year 4' },
-        { year: 'year4', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Dance+Year+4', alt: 'Year 4 dance' },
-        { year: 'year5', type: 'image', src: 'https://placehold.co/600x400/138808/white?text=Year+5+Exhibition', alt: 'Year 5' },
-        { year: 'year5', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=Year+5+Award', alt: 'Year 5 award' },
-        { year: 'year6', type: 'video', src: 'https://placehold.co/600x400/0B1E3F/white?text=Year+6+Highlights', alt: 'Year 6' },
-        { year: 'year6', type: 'image', src: 'https://www.facebook.com/photo.php?fbid=7793836230726731&set=a.312512542192508&type=3&mibextid=NOb6eG', alt: 'Year 6' },
-        { year: 'year7', type: 'image', src:'photo2.jpg', alt: 'moment' },
-        { year: 'year7', type: 'video', src: 'https://www.instagram.com/reel/DNc19Stvbfl/?igsh=MWc0Z3A2YnFzOHM0ZQ==', alt: 'Year 7 video' }
+        { year: '2017', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=2017+First+Flag', alt: '2017' },
+        { year: '2017', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2017 video' },
+        { year: '2018', type: 'image', src: 'https://placehold.co/600x400/0B1E3F/white?text=2018+Cultural', alt: '2018' },
+        { year: '2018', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2018 dance' },
+        { year: '2019', type: 'image', src: 'https://placehold.co/600x400/138808/white?text=2019+Rally', alt: '2019 rally' },
+        { year: '2019', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2019 highlights' },
+        { year: '2020', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=2020+Virtual', alt: '2020' },
+        { year: '2020', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2020 virtual' },
+        { year: '2021', type: 'image', src: 'https://placehold.co/600x400/0B1E3F/white?text=2021+Kitchen', alt: '2021' },
+        { year: '2021', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2021 tribute' },
+        { year: '2022', type: 'image', src: 'https://placehold.co/600x400/138808/white?text=2022+Parade', alt: '2022' },
+        { year: '2022', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2022 parade' },
+        { year: '2023', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=2023+Talent', alt: '2023' },
+        { year: '2023', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2023 showcase' },
+        { year: '2024', type: 'image', src: 'https://placehold.co/600x400/0B1E3F/white?text=2024+Exhibition', alt: '2024' },
+        { year: '2024', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2024 fest' },
+        { year: '2025', type: 'image', src: 'https://placehold.co/600x400/138808/white?text=2025+80th+Year', alt: '2025' },
+        { year: '2025', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2025 milestone' },
+        { year: '2026', type: 'image', src: 'https://placehold.co/600x400/FF9933/white?text=2026+Decade', alt: '2026' },
+        { year: '2026', type: 'video', src: 'https://www.youtube.com/embed/dQw4w9WgXcQ', alt: '2026 celebration' }
       ];
 
       const galleryGrid = document.getElementById('gallery-grid');
@@ -320,22 +421,32 @@
         
         galleryGrid.innerHTML = filtered.map(item => {
           const isVideo = item.type === 'video';
-          return `
-            <div class="gallery-item relative overflow-hidden rounded-xl bg-white shadow-md group" data-year="${item.year}">
-              <img src="${item.src}" alt="${item.alt}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
-              ${isVideo ? '<div class="absolute inset-0 flex items-center justify-center"><i class="fas fa-play-circle text-white text-5xl opacity-80 drop-shadow-lg"></i></div>' : ''}
-              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                <span class="text-white text-xs font-semibold uppercase tracking-wider">${item.year.replace('year','Year ')}</span>
+          if (isVideo) {
+            return `
+              <div class="gallery-item relative overflow-hidden rounded-xl bg-white shadow-md group" data-year="${item.year}">
+                <div class="relative w-full" style="padding-bottom: 56.25%;">
+                  <iframe class="absolute top-0 left-0 w-full h-full" src="${item.src}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                  <span class="text-white text-xs font-semibold uppercase tracking-wider">${item.year}</span>
+                </div>
               </div>
-            </div>
-          `;
+            `;
+          } else {
+            return `
+              <div class="gallery-item relative overflow-hidden rounded-xl bg-white shadow-md group" data-year="${item.year}">
+                <img src="${item.src}" alt="${item.alt}" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                  <span class="text-white text-xs font-semibold uppercase tracking-wider">${item.year}</span>
+                </div>
+              </div>
+            `;
+          }
         }).join('');
       }
 
-      // Initial render
       renderGallery('all');
 
-      // Filter button logic
       filterButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
           filterButtons.forEach(b => b.classList.remove('active', 'bg-navy', 'text-white'));
@@ -345,14 +456,13 @@
         });
       });
 
-      // ---------- MOBILE MENU TOGGLE ----------
+      // ---------- MOBILE MENU ----------
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if (menuButton && mobileMenu) {
         menuButton.addEventListener('click', () => {
           mobileMenu.classList.toggle('hidden');
         });
-        // close menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
@@ -360,7 +470,7 @@
         });
       }
 
-      // ---------- SCROLL REVEAL ANIMATION ----------
+      // ---------- SCROLL REVEAL ----------
       const revealElements = document.querySelectorAll('.reveal');
       function checkReveal() {
         const windowHeight = window.innerHeight;
@@ -374,10 +484,9 @@
       }
       window.addEventListener('scroll', checkReveal);
       window.addEventListener('load', checkReveal);
-      // Trigger once on load
       checkReveal();
 
-      // Smooth scrolling for anchor links (fallback)
+      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
