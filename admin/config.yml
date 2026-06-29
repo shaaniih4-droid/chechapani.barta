@@ -1,0 +1,22 @@
+# Tells the CMS to commit changes directly to your GitHub repository
+backend:
+  name: github
+  repo: your-github-username/your-repo-name # ⚠️ Change this to your repo!
+  branch: main # Change to 'master' if your main branch uses that name
+
+# Where uploaded images/files will be saved in your repo
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Define the sections of your website you want to manage
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts" # The folder where markdown files will save
+    create: true # Allows you to create new posts from the admin panel
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
